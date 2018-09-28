@@ -10,7 +10,7 @@ object Test004 {
     val date = new Date()
     val sdf = new SimpleDateFormat("yyyyMMddHHmmss")
     val before = sdf.format(date).toLong
-    val conf=new SparkConf().setAppName("test004")
+    val conf=new SparkConf().setAppName("test004").setMaster("local[*]")
     val sc=new SparkContext(conf)
     sc.setLogLevel("WARN")
     val testfile=sc.textFile("hdfs://172.18.130.100/user/hdfs/sqoop_table/*")

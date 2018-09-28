@@ -14,7 +14,8 @@ object Test001 {
       val sc=new SparkContext(conf)
       sc.setLogLevel("WARN")
       val testfile=sc.textFile("hdfs://172.18.130.100/liupei/test/fiction.txt")
-      val str=testfile.flatMap(_.split(" ")).map((_,1)).reduceByKey(_ + _).filter(_._2>10)
-        .saveAsTextFile("hdfs://172.18.130.100/liupei/test/results/"+time)
+  /*    val str=testfile.flatMap(_.split(" ")).map((_,1)).reduceByKey(_ + _).filter(_._2>10)
+        .saveAsTextFile("hdfs://172.18.130.100/liupei/test/results/"+time)*/
+      val str=testfile.flatMap(_.split(" ")).map((_,1)).reduceByKey(_ + _).filter(_._2>10).foreach(print(_))
   }
 }
